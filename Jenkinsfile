@@ -1,8 +1,9 @@
 pipeline {
-	agent none
+	agent any
 	stages {
-		state('DependecyCheckTest'){
-			stage('Checkout SCM') {
+		stage('Integration UI Test') {
+			parallel {
+				stage('Checkout SCM') {
 					steps {
 						git branch:'master', url:'https://github.com/0xprime/JenkinsDependencyCheckTest.git'
 					}
@@ -12,9 +13,6 @@ pipeline {
 						dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
 					}
 				}
-		}
-		stage('Integration UI Test') {
-			parallel {
 				stage('Deploy') {
 					agent any
 					steps {
