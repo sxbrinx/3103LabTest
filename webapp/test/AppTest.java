@@ -37,6 +37,32 @@ public class AppTest
     public void tearDown() { 
 		driver.quit(); 
 	}	 
+
+	// def checkPasswordValid(password):
+    // special_characters = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+    // lowercase, uppercase, digit, special = 0, 0, 0, 0
+    // if (len(password) >= 8):
+    //     for i in password:
+    //         # counting lowercase alphabets
+    //         if (i.islower()):
+    //             lowercase+=1           
+    
+    //         # counting uppercase alphabets
+    //         if (i.isupper()):
+    //             uppercase+=1           
+    
+    //         # counting digits
+    //         if (i.isdigit()):
+    //             digit+=1           
+                
+    //         if (i in special_characters):
+    //             special+=1
+
+    // if (lowercase>=1 and uppercase>=1 and digit>=1 \
+    //     and lowercase+uppercase+digit+special==len(password)):
+    //     return True
+    // else:
+    //     return False
 	
     @Test
     public void testLoginWithValidPassword() 

@@ -17,7 +17,11 @@
 			}
 			$errorMsg = "Login failed";
 		}
-	}
+
+		public static boolean is_Valid_Password(String password) {
+
+			if (password.length() <  10) return false;
+		}
 ?>
 
 <!DOCTYPE html>
