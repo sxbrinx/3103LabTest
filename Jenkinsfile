@@ -1,6 +1,18 @@
 pipeline {
 	agent none
 	stages {
+		state('DependecyCheckTest'){
+			stage('Checkout SCM') {
+					steps {
+						git branch:'master', url:'https://github.com/0xprime/JenkinsDependencyCheckTest.git'
+					}
+				}
+				stage('OWASP DependencyCheck') {
+					steps {
+						dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
+					}
+				}
+		}
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {
@@ -29,17 +41,6 @@ pipeline {
 						}
 					}
 				}
-                stage('Checkout SCM') {
-			steps {
-				git branch:'master', url:'https://github.com/0xprime/JenkinsDependencyCheckTest.git'
-			}
-		}
-
-		stage('OWASP DependencyCheck') {
-			steps {
-				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
-			}
-		}
 			}
 		}
 	}
